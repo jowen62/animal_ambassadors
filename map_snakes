@@ -1,0 +1,22 @@
+
+# clear everything from the environment 
+rm(list=ls(all=TRUE))
+
+# load packages -----------------------------------------------------------
+
+  #
+  library(data.table)
+  library(terra)
+  library(maps)
+  library(ggplot2)
+
+in_cornsnake <- terra::vect('cornsnake/data_0.shp')
+in_dekays    <- terra::vect('dekays/data_0.shp')
+
+map(database = "usa", fill = T, col = "#6f9a26", bg = 'transparent')
+plot(in_cornsnake, col = '#f28610', add = T)
+
+map(database = "world", regions = c("mexico", 'guatemala', 'honduras'), 
+    fill = T, col = "#6f9a26", bg = 'transparent')
+plot(in_dekays, col = '#f28610', add = T)
+
